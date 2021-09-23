@@ -1,18 +1,16 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// Write password to the #password input
+function writePassword() {
+  var password = passGenerate();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}
 
 // Required array objects for password generation
 var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -25,7 +23,7 @@ var numberConfirm
 var specialCharConfirm
 var upperCaseConfirm
 var lowerCaseConfirm
-var lengthConfirm
+var lengthConfirm = ""
 
 // Start of the password generation function
 function passGenerate() {
@@ -57,33 +55,29 @@ function passGenerate() {
   }
 
   // Password creation process
-  var password = []
-  passwordRand = passwordRand + password[Math.floor(Math.random() * password)];
+  var userPassword = [""]
+  passwordRand = passwordRand + userPassword[Math.floor(Math.random() * password)];
 
   // The foor loop to generate password amongst the options that will be chosen
-  for (var i = 0; i <lengthConfirm; i++) {
-    var password = passwordRand;
+  for (var i = 0; i <10; i++) {
+    userPassword = passwordRand;
 }
 
   if (numberConfirm) {
-    password = password.concat(number)
+    userPassword = userPassword.concat(number)
   }
   
   if (specialCharConfirm) {
-    password = password.concat(specialChar)
+    userPassword = userPassword.concat(specialChar)
   }
 
   if (upperCaseConfirm) {
-    password = password.concat(upperCaseConfirm)
+    userPassword = userPassword.concat(upperCaseLetter)
   }
 
   if (lowerCaseConfirm) {
-    password = password.concat(lowerCaseConfirm)
+    userPassword = userPassword.concat(lowerCaseLetter)
   }
-  return passwordRand
-}
-
-function displayPassword() {
-  password = generatePassword()
+  return passwordRand;
   
 }
