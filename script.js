@@ -4,6 +4,14 @@ var generateBtn = document.querySelector("#generate");
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// Write password to the #password input
+function writePassword() {
+  var password = passGenerate();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}
+
 // Required array objects for password generation
 var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
@@ -46,15 +54,12 @@ function passGenerate() {
     lowerCaseConfirm = confirm("Click OK if you would like your password to have lowercase letters.")
   }
 
-  // Password creation process
-  var userPasswordChar = []
-  var passwordRand = ""
+  // Password creation process variables
+  var userPasswordChar = [];
+  var passRand = "";
 
   // The foor loop to generate password amongst the options that will be chosen
-  for (var i = 0; i < lengthConfirm; i++) {
-    passwordRand = passwordRand + userPasswordChar[Math.floor(Math.random() * userPasswordChar.length)];
-    // userPasswordChar = passwordRand;
-}
+ 
 
   if (numberConfirm) {
     userPasswordChar = userPasswordChar.concat(number)
@@ -71,14 +76,11 @@ function passGenerate() {
   if (lowerCaseConfirm) {
     userPasswordChar = userPasswordChar.concat(lowerCaseChar)
   }
-  return passwordRand;
-  
+
+  for (var i = 0; i < lengthConfirm; i++) {
+    passRand = passRand + userPasswordChar[Math.floor(Math.random() * userPasswordChar.length)];
 }
 
-// Write password to the #password input
-function writePassword() {
-  var password = passGenerate();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+  return passRand;
+  
 }
