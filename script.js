@@ -13,6 +13,8 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+//Start of code done by MEHDI SAFARI
+
 // Required array objects for password generation
 var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
@@ -26,11 +28,23 @@ var upperCaseConfirm
 var lowerCaseConfirm
 var lengthConfirm
 
+// Start of the password generation function
 function passGenerate() {
   lengthConfirm = prompt("Type down the desired length of your password. Between 8-128 characters.")
 
-  if (lengthConfirm >= 7 || lengthConfirm >= 129) {
-    alert("The password length must be at least 8 characters and no more than 128")
+  if (!lengthConfirm) {
+    alert("You must choose a password length to continue!")
     lengthConfirm = prompt("Try again, type down the desired length of your password. Between 8-128 characters.")
-  }
+  }else if (lengthConfirm >= 7 || lengthConfirm <= 129) {
+    alert("The password length must be at least 8 characters and no more than 128 characters.")
+    lengthConfirm = prompt("Try again, type down the desired length of your password. Between 8-128 characters.")
+  }else
+  alert(`Your desired password will have ${lengthConfirm} characters.`)
+
+  // Confirming with user other requirements of their password
+  numberConfirm = confirm("Click OK if you would like your password to have numbers.")
+  speacialCharConfirm = confirm("Click OK if you would like your password to have speacial characters.")
+  upperCaseConfirm = confirm("Click OK if you would like your password to have uppercase characters.")
+  lowerCaseConfirm = confirm("Click OK if you would like your password to have lowercase letters.")
+
 }
