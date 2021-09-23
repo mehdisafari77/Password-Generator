@@ -4,26 +4,18 @@ var generateBtn = document.querySelector("#generate");
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// Write password to the #password input
-function writePassword() {
-  var password = passGenerate();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-}
-
 // Required array objects for password generation
 var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
-var lowerCaseLetter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var upperCaseLetter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var lowerCaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 // Confirmation variables
-var numberConfirm
-var specialCharConfirm
-var upperCaseConfirm
-var lowerCaseConfirm
-var lengthConfirm = ""
+var numberConfirm;
+var specialCharConfirm;
+var upperCaseConfirm;
+var lowerCaseConfirm;
+var lengthConfirm = "";
 
 // Start of the password generation function
 function passGenerate() {
@@ -55,29 +47,38 @@ function passGenerate() {
   }
 
   // Password creation process
-  var userPassword = [""]
-  passwordRand = passwordRand + userPassword[Math.floor(Math.random() * password)];
+  var userPasswordChar = []
+  var passwordRand = ""
 
   // The foor loop to generate password amongst the options that will be chosen
-  for (var i = 0; i <10; i++) {
-    userPassword = passwordRand;
+  for (var i = 0; i < lengthConfirm; i++) {
+    passwordRand = passwordRand + userPasswordChar[Math.floor(Math.random() * userPasswordChar.length)];
+    // userPasswordChar = passwordRand;
 }
 
   if (numberConfirm) {
-    userPassword = userPassword.concat(number)
+    userPasswordChar = userPasswordChar.concat(number)
   }
   
   if (specialCharConfirm) {
-    userPassword = userPassword.concat(specialChar)
+    userPasswordChar = userPasswordChar.concat(specialChar)
   }
 
   if (upperCaseConfirm) {
-    userPassword = userPassword.concat(upperCaseLetter)
+    userPasswordChar = userPasswordChar.concat(upperCaseChar)
   }
 
   if (lowerCaseConfirm) {
-    userPassword = userPassword.concat(lowerCaseLetter)
+    userPasswordChar = userPasswordChar.concat(lowerCaseChar)
   }
   return passwordRand;
   
+}
+
+// Write password to the #password input
+function writePassword() {
+  var password = passGenerate();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
 }
