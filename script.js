@@ -13,7 +13,6 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-//Start of code done by MEHDI SAFARI
 
 // Required array objects for password generation
 var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -23,7 +22,7 @@ var upperCaseLetter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L
 
 // Confirmation variables
 var numberConfirm
-var speacialCharConfirm
+var specialCharConfirm
 var upperCaseConfirm
 var lowerCaseConfirm
 var lengthConfirm
@@ -35,16 +34,56 @@ function passGenerate() {
   if (!lengthConfirm) {
     alert("You must choose a password length to continue!")
     lengthConfirm = prompt("Try again, type down the desired length of your password. Between 8-128 characters.")
-  }else if (lengthConfirm >= 7 || lengthConfirm <= 129) {
+
+  }else if (lengthConfirm <= 7 || lengthConfirm >= 129) {
     alert("The password length must be at least 8 characters and no more than 128 characters.")
     lengthConfirm = prompt("Try again, type down the desired length of your password. Between 8-128 characters.")
+
   }else
   alert(`Your desired password will have ${lengthConfirm} characters.`)
 
   // Confirming with user other requirements of their password
   numberConfirm = confirm("Click OK if you would like your password to have numbers.")
-  speacialCharConfirm = confirm("Click OK if you would like your password to have speacial characters.")
+  specialCharConfirm = confirm("Click OK if you would like your password to have special characters.")
   upperCaseConfirm = confirm("Click OK if you would like your password to have uppercase characters.")
   lowerCaseConfirm = confirm("Click OK if you would like your password to have lowercase letters.")
 
+  if (!numberConfirm && !specialCharConfirm && !upperCaseConfirm && !lowerCaseConfirm) {
+    alert("You must confirm at least one of the options.")
+    numberConfirm = confirm("Click OK if you would like your password to have numbers.")
+    specialCharConfirm = confirm("Click OK if you would like your password to have speacial characters.")
+    upperCaseConfirm = confirm("Click OK if you would like your password to have uppercase characters.")
+    lowerCaseConfirm = confirm("Click OK if you would like your password to have lowercase letters.")
+  }
+
+  // Password creation process
+  var password = []
+  passwordRand = passwordRand + password[Math.floor(Math.random() * password)];
+
+  // The foor loop to generate password amongst the options that will be chosen
+  for (var i = 0; i <lengthConfirm; i++) {
+    var password = passwordRand;
+}
+
+  if (numberConfirm) {
+    password = password.concat(number)
+  }
+  
+  if (specialCharConfirm) {
+    password = password.concat(specialChar)
+  }
+
+  if (upperCaseConfirm) {
+    password = password.concat(upperCaseConfirm)
+  }
+
+  if (lowerCaseConfirm) {
+    password = password.concat(lowerCaseConfirm)
+  }
+  return passwordRand
+}
+
+function displayPassword() {
+  password = generatePassword()
+  
 }
