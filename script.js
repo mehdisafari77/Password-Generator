@@ -27,5 +27,10 @@ var lowerCaseConfirm
 var lengthConfirm
 
 function passGenerate() {
-  
+  lengthConfirm = prompt("Type down the desired length of your password. Between 8-128 characters.")
+
+  if (lengthConfirm >= 7 || lengthConfirm >= 129) {
+    alert("The password length must be at least 8 characters and no more than 128")
+    lengthConfirm = prompt("Try again, type down the desired length of your password. Between 8-128 characters.")
+  }
 }
