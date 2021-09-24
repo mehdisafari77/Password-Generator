@@ -1,6 +1,4 @@
 # Password Generator
-
-# Basic-Bio
 A Password Generator in order to allow better password creation for users using prompts, alerts and confirms.
 
 ## Site GIf
